@@ -1,0 +1,7 @@
+!pip install google-cloud-storage pandas-gbq opendatasets pandas
+
+import pandas as pd
+import opendatasets as od
+import pandas_gbq
+import os
+from google.cloud import storage
