@@ -7,6 +7,8 @@ This project implements an **ETL (Extract, Transform, Load)** pipeline to analyz
 - **Extract**: Downloads the dataset from Kaggle.
 - **Transform**: Calculates total revenue, sales by country, and sales by category.
 - **Load**: Uploads the transformed data to Google BigQuery.
+- **Visualization**: Plots total revenue, sales by country, and sales by category in Looker Studio
+- **Automation**: Uses Google Cloud Storage, Run and Scheduler to update the pipeline weekly
 
 ## Prerequisites
 1. **Python 3.8+**: Install Python from [python.org](https://www.python.org/).
@@ -18,3 +20,6 @@ This project implements an **ETL (Extract, Transform, Load)** pipeline to analyz
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/etl-ecommerce-pipeline.git
+
+## Further Details
+- **Doc**: https://docs.google.com/document/d/1qmzXRbRrlhXhmb1DvJBzfOqYBsk7Tf3EejJtL2orz1k/edit?usp=sharing
