@@ -1,0 +1,9 @@
+WITH
+  SalesPerCategory AS (
+    SELECT
+      Description AS Category,
+      SUM(TotalRevenue) AS TotalRevenue
+    FROM `composed-hold-452215-v4.ecommerce_data.sales_report`
+    GROUP BY Description
+    )
+SELECT * FROM SalesPerCategory;
