@@ -1,0 +1,6 @@
+WITH
+  TotalRevenue AS (
+    SELECT SUM(TotalRevenue) AS TotalRevenue
+    FROM `composed-hold-452215-v4.ecommerce_data.sales_report`
+  )
+SELECT * FROM TotalRevenue;
