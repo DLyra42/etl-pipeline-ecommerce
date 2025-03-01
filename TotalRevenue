@@ -1,3 +1,5 @@
+-- SQL querie to fetch TotalRevenue
+
 WITH
   TotalRevenue AS (
     SELECT SUM(TotalRevenue) AS TotalRevenue
