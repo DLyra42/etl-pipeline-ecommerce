@@ -1,3 +1,5 @@
+-- SQL querie to fetch SalesPerCountry
+
 WITH  
   SalesPerCountry AS (
     SELECT Country,
