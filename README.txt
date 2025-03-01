@@ -1,7 +1,8 @@
 # ETL Pipeline for E-commerce Data Analysis
 
 ## Overview
-This project implements an **ETL (Extract, Transform, Load)** pipeline to analyze e-commerce data. The pipeline extracts data from a Kaggle dataset, cleans and transforms it, and loads it into **Google BigQuery** for further analysis.
+This project implements an **ETL (Extract, Transform, Load)** pipeline to analyze e-commerce data. 
+The pipeline extracts data from a Kaggle dataset, cleans and transforms it, and loads it into **Google BigQuery** for further analysis.
 
 ## Key Features
 - **Extract**: Downloads the dataset from Kaggle.
