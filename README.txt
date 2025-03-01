@@ -5,9 +5,11 @@ This project implements an **ETL (Extract, Transform, Load)** pipeline to analyz
 
 ## Key Features
 - **Extract**: Downloads the dataset from Kaggle.
+   https://www.kaggle.com/datasets/carrie1/ecommerce-data/data
 - **Transform**: Calculates total revenue, sales by country, and sales by category.
 - **Load**: Uploads the transformed data to Google BigQuery.
 - **Visualization**: Plots total revenue, sales by country, and sales by category in Looker Studio
+   https://lookerstudio.google.com/reporting/c33ffe0a-e993-4acb-a1cf-b29d2cac0bdb
 - **Automation**: Uses Google Cloud Storage, Run and Scheduler to update the pipeline weekly
 
 ## Prerequisites
