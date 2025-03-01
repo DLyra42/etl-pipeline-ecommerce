@@ -171,11 +171,11 @@ def load_data(data, project_id, dataset_id, table_id, credentials_path):
 # Main function
 def main():
     # Set up
-    project_id = os.getenv("GCP_PROJECT_ID")
-    dataset_id = os.getenv("GCP_DATASET_ID")
-    table_id = os.getenv("GCP_TABLE_ID")
+    project_id = os.getenv("composed-hold-452215-v4")
+    dataset_id = os.getenv("composed-hold-452215-v4.ecommerce_data")
+    table_id = os.getenv("composed-hold-452215-v4.ecommerce_data.sales_report")
     credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-    bucket_name = "amentoria"  # Replace with your bucket name
+    bucket_name = "amentoria" 
 
     # Step 1: Extract Data
     print("Extracting data...")
@@ -205,3 +205,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+     
