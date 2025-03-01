@@ -1,3 +1,5 @@
+-- SQL querie to fetch SalesPerCategory
+
 WITH
   SalesPerCategory AS (
     SELECT
