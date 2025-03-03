@@ -1,3 +1,6 @@
+# Authenticates user
+auth.authenticate_user()
+
 # Extract data
 def extract_data():
     """
