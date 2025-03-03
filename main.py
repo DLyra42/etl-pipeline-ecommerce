@@ -1,75 +1,3 @@
-# Initialize GCS client
-def initialize_gcs_client():
-    """
-    Initializes the Google Cloud Storage client.
-
-    Returns:
-        storage.Client: The GCS client object.
-    """
-    return storage.Client()
-
-# Upload a file to GCS
-def upload_to_gcs(bucket_name, source_file_name, destination_blob_name):
-    """
-    Uploads a file to Google Cloud Storage.
-
-    Args:
-        bucket_name (str): Name of the GCS bucket.
-        source_file_name (str): Path to the local file to upload.
-        destination_blob_name (str): Name of the file in GCS.
-    """
-    client = initialize_gcs_client()
-    bucket = client.bucket(bucket_name)
-    blob = bucket.blob(destination_blob_name)
-    blob.upload_from_filename(source_file_name)
-    print(f"File {source_file_name} uploaded to {destination_blob_name}.")
-
-# Download a file from GCS
-def download_from_gcs(bucket_name, source_blob_name, destination_file_name):
-    """
-    Downloads a file from Google Cloud Storage.
-
-    Args:
-        bucket_name (str): Name of the GCS bucket.
-        source_blob_name (str): Name of the file in GCS.
-        destination_file_name (str): Path to save the downloaded file.
-    """
-    client = initialize_gcs_client()
-    bucket = client.bucket(bucket_name)
-    blob = bucket.blob(source_blob_name)
-    blob.download_to_filename(destination_file_name)
-    print(f"File {source_blob_name} downloaded to {destination_file_name}.")
-
-# Save cleaned data to GCS
-def save_cleaned_data_to_gcs(data, bucket_name, file_name):
-    """
-    Saves cleaned data to Google Cloud Storage.
-
-    Args:
-        data (pd.DataFrame): The cleaned dataset.
-        bucket_name (str): Name of the GCS bucket.
-        file_name (str): Name of the file in GCS.
-    """
-    local_file = "/tmp/cleaned_data.csv"  # Temporary local file
-    data.to_csv(local_file, index=False)
-    upload_to_gcs(bucket_name, local_file, file_name)
-
-# Load raw data from GCS
-def load_raw_data_from_gcs(bucket_name, file_name):
-    """
-    Loads raw data from Google Cloud Storage.
-
-    Args:
-        bucket_name (str): Name of the GCS bucket.
-        file_name (str): Name of the file in GCS.
-
-    Returns:
-        pd.DataFrame: The raw dataset.
-    """
-    local_file = "/tmp/raw_data.csv"  # Temporary local file
-    download_from_gcs(bucket_name, file_name, local_file)
-    return pd.read_csv(local_file)
-
 # Extract data
 def extract_data():
     """
@@ -167,6 +95,78 @@ def load_data(data, project_id, dataset_id, table_id, credentials_path):
         print(f"Data uploaded to BigQuery: {dataset_id}.{table_id}")
     except Exception as e:
         print(f"Error loading data into BigQuery: {e}")
+
+# Initialize GCS client
+def initialize_gcs_client():
+    """
+    Initializes the Google Cloud Storage client.
+
+    Returns:
+        storage.Client: The GCS client object.
+    """
+    return storage.Client()
+
+# Upload a file to GCS
+def upload_to_gcs(bucket_name, source_file_name, destination_blob_name):
+    """
+    Uploads a file to Google Cloud Storage.
+
+    Args:
+        bucket_name (str): Name of the GCS bucket.
+        source_file_name (str): Path to the local file to upload.
+        destination_blob_name (str): Name of the file in GCS.
+    """
+    client = initialize_gcs_client()
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+    blob.upload_from_filename(source_file_name)
+    print(f"File {source_file_name} uploaded to {destination_blob_name}.")
+
+# Download a file from GCS
+def download_from_gcs(bucket_name, source_blob_name, destination_file_name):
+    """
+    Downloads a file from Google Cloud Storage.
+
+    Args:
+        bucket_name (str): Name of the GCS bucket.
+        source_blob_name (str): Name of the file in GCS.
+        destination_file_name (str): Path to save the downloaded file.
+    """
+    client = initialize_gcs_client()
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(source_blob_name)
+    blob.download_to_filename(destination_file_name)
+    print(f"File {source_blob_name} downloaded to {destination_file_name}.")
+
+# Save cleaned data to GCS
+def save_cleaned_data_to_gcs(data, bucket_name, file_name):
+    """
+    Saves cleaned data to Google Cloud Storage.
+
+    Args:
+        data (pd.DataFrame): The cleaned dataset.
+        bucket_name (str): Name of the GCS bucket.
+        file_name (str): Name of the file in GCS.
+    """
+    local_file = "/tmp/cleaned_data.csv"  # Temporary local file
+    data.to_csv(local_file, index=False)
+    upload_to_gcs(bucket_name, local_file, file_name)
+
+# Load raw data from GCS
+def load_raw_data_from_gcs(bucket_name, file_name):
+    """
+    Loads raw data from Google Cloud Storage.
+
+    Args:
+        bucket_name (str): Name of the GCS bucket.
+        file_name (str): Name of the file in GCS.
+
+    Returns:
+        pd.DataFrame: The raw dataset.
+    """
+    local_file = "/tmp/raw_data.csv"  # Temporary local file
+    download_from_gcs(bucket_name, file_name, local_file)
+    return pd.read_csv(local_file)
 
 # Main function
 def main():
