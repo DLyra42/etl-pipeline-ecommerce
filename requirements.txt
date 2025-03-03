@@ -1,6 +1,9 @@
+# Install required libraries
 !pip install google-cloud-storage pandas-gbq opendatasets pandas
 
+# Libraries
 import pandas as pd
 import opendatasets as od
 import pandas_gbq
 from google.cloud import storage
+from google.colab import auth
