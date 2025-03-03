@@ -36,7 +36,7 @@ Este projeto implementa um pipeline ETL (Extract, Transform, Load) para analisar
 O pipeline extrai dados de um conjunto de dados do Kaggle, limpa e transforma esses dados, e os carrega no Google BigQuery para análise posterior.
 
 ## Principais Funcionalidades
-- **Extração((: Baixa o conjunto de dados do Kaggle.
+- **Extração**: Baixa o conjunto de dados do Kaggle.
 https://www.kaggle.com/datasets/carrie1/ecommerce-data/data
 - **Transformação**: Calcula a receita total, vendas por país e vendas por categoria.
 - **Carregamento**: Envia os dados transformados para o Google BigQuery.
