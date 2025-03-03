@@ -29,7 +29,7 @@ The pipeline extracts data from a Kaggle dataset, cleans and transforms it, and 
 
 ------------------------------------------------------------------------------------------------------------------
 
-Pipeline ETL para Análise de Dados de E-commerce (PT-BR)
+# Pipeline ETL para Análise de Dados de E-commerce (PT-BR)
 
 ## Visão Geral
 Este projeto implementa um pipeline ETL (Extract, Transform, Load) para analisar dados de e-commerce.
