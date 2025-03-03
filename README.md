@@ -47,8 +47,8 @@ https://lookerstudio.google.com/reporting/c33ffe0a-e993-4acb-a1cf-b29d2cac0bdb
 ## Pré-requisitos
 1.**Python 3.8+**: Instale o Python a partir de python.org.
 2.**Conta no Google Cloud Platform (GCP)**: Crie uma conta no GCP e um projeto.
-3.**Chave de Conta de Serviço**: Gere uma chave de conta de serviço com acesso ao BigQuery e salve-a como 4.config/gcp_config.json.
-**Conta no Kaggle**: Crie uma conta no Kaggle e baixe seu token de API (kaggle.json).
+3.**Chave de Conta de Serviço**: Gere uma chave de conta de serviço com acesso ao BigQuery e salve-a como config/gcp_config.json.
+4.**Conta no Kaggle**: Crie uma conta no Kaggle e baixe seu token de API (kaggle.json).
 
 ## Instalação
 Clone o repositório:
