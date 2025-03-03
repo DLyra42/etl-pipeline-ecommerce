@@ -47,6 +47,20 @@ def clean_data(data):
     data.drop_duplicates(inplace=True)
     return data
 
+# Save cleaned data to GCS
+def save_cleaned_data_to_gcs(data, bucket_name, file_name):
+    """
+    Saves cleaned data to Google Cloud Storage.
+
+    Args:
+        data (pd.DataFrame): The cleaned dataset.
+        bucket_name (str): Name of the GCS bucket.
+        file_name (str): Name of the file in GCS.
+    """
+    local_file = "/tmp/cleaned_data.csv"  # Temporary local file
+    data.to_csv(local_file, index=False)
+    upload_to_gcs(bucket_name, local_file, file_name)
+
 # Transform data
 def transform_data(data):
     """
@@ -122,60 +136,15 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name):
     blob.upload_from_filename(source_file_name)
     print(f"File {source_file_name} uploaded to {destination_blob_name}.")
 
-# Download a file from GCS
-def download_from_gcs(bucket_name, source_blob_name, destination_file_name):
-    """
-    Downloads a file from Google Cloud Storage.
-
-    Args:
-        bucket_name (str): Name of the GCS bucket.
-        source_blob_name (str): Name of the file in GCS.
-        destination_file_name (str): Path to save the downloaded file.
-    """
-    client = initialize_gcs_client()
-    bucket = client.bucket(bucket_name)
-    blob = bucket.blob(source_blob_name)
-    blob.download_to_filename(destination_file_name)
-    print(f"File {source_blob_name} downloaded to {destination_file_name}.")
-
-# Save cleaned data to GCS
-def save_cleaned_data_to_gcs(data, bucket_name, file_name):
-    """
-    Saves cleaned data to Google Cloud Storage.
-
-    Args:
-        data (pd.DataFrame): The cleaned dataset.
-        bucket_name (str): Name of the GCS bucket.
-        file_name (str): Name of the file in GCS.
-    """
-    local_file = "/tmp/cleaned_data.csv"  # Temporary local file
-    data.to_csv(local_file, index=False)
-    upload_to_gcs(bucket_name, local_file, file_name)
-
-# Load raw data from GCS
-def load_raw_data_from_gcs(bucket_name, file_name):
-    """
-    Loads raw data from Google Cloud Storage.
-
-    Args:
-        bucket_name (str): Name of the GCS bucket.
-        file_name (str): Name of the file in GCS.
-
-    Returns:
-        pd.DataFrame: The raw dataset.
-    """
-    local_file = "/tmp/raw_data.csv"  # Temporary local file
-    download_from_gcs(bucket_name, file_name, local_file)
-    return pd.read_csv(local_file)
-
 # Main function
 def main():
     # Set up
-    project_id = os.getenv("composed-hold-452215-v4")
-    dataset_id = os.getenv("composed-hold-452215-v4.ecommerce_data")
-    table_id = os.getenv("composed-hold-452215-v4.ecommerce_data.sales_report")
-    credentials_path = os.getenv("config/gcp_config.json")
-    bucket_name = os.getenv("amentoria") 
+    project_id = "composed-hold-452215-v4"
+    dataset_id = "ecommerce_data"
+    table_id = "sales_report"
+    credentials_path ="config/gcp_config.json"
+    bucket_name = "ecommercev2"
+    cleaned_data_file = "cleaned_data.csv"
 
     # Step 1: Extract Data
     print("Extracting data...")
@@ -190,7 +159,7 @@ def main():
     data = clean_data(data)
 
     # Step 4: Save Cleaned Data to GCS
-    cleaned_data_file = "cleaned_data.csv"
+    print("\nSaving cleaned data to GCS...")
     save_cleaned_data_to_gcs(data, bucket_name, cleaned_data_file)
 
     # Step 5: Transform Data
@@ -205,4 +174,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-     
