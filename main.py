@@ -175,7 +175,7 @@ def main():
     dataset_id = os.getenv("composed-hold-452215-v4.ecommerce_data")
     table_id = os.getenv("composed-hold-452215-v4.ecommerce_data.sales_report")
     credentials_path = os.getenv("config/gcp_config.json")
-    bucket_name = "amentoria" 
+    bucket_name = os.getenv("amentoria") 
 
     # Step 1: Extract Data
     print("Extracting data...")
